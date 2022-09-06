@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper scissors</title>
+    <style>
+        .container {
+            display: inline-flex;
+        }
+
+        body {
+            text-align: center;
+            background-image: url(https://imgs.search.brave.com/U_1NzWZ-sDvBtdkTZSuoY9ferRD3W6zhZ0V2n9AMdB0/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC43/d0J5OXJmWFZpYTRj/eFBoRnFkcTRBSGFG/aiZwaWQ9QXBp);
+        }
+        button {
+            border: 2px solid black dotted;
+            border-radius: 120x;
+            background-image: url(https://imgs.search.brave.com/U_1NzWZ-sDvBtdkTZSuoY9ferRD3W6zhZ0V2n9AMdB0/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC43/d0J5OXJmWFZpYTRj/eFBoRnFkcTRBSGFG/aiZwaWQ9QXBp);
+        }
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h2>Rock, Paper and Scissors</h3>
+    <button id="inp">Click to type option</button><br>
+    <div class="container">
+        <div id="box1">
+            <h5>User Choice</h5>
+            <p id="user"></p>
+            <img id="u" src="" width="100" height="100" alt="Please enter an acceptable value for this to load">
+        </div>
+        <div id="box2">
+            <h5>Computer Choice</h5>
+            <p id="pc"></p>
+            <img id="comp" src="" width="100" height="100" alt="Please enter your choice for this to load">
+        </div>
+    </div>
+    <br>
+    <p id="result"></p>
+    <br><br>
+    <div class="container">
+        <div id="userscore"></div>
+        <div><b>:</b></div>
+        <div id="pcscore"></div>
+    </div>
+
+    <script>
+        var game = ["rock","paper","scissor"]
+        var output = Math.floor(Math.random()*3)
+        a = 0
+        b = 0
+        document.getElementById("inp").addEventListener("click", func);
+        function func(){
+            document.getElementById("inp").innerHTML = "Play again"
+            var y = prompt("Enter rock paper or scissors all lower caps");
+            document.getElementById("user").innerHTML = y;
+            var game = ["rock","paper","scissors"];
+            var output = Math.floor(Math.random()*3);
+            x = game[output]
+            document.getElementById("pc").innerHTML = x;
+
+            //creating var for score
+            document.getElementById("userscore").innerHTML = a
+            document.getElementById("pcscore").innerHTML = b
+
+            //create image
+            if(x=="rock"){
+                document.getElementById("comp").src = "https://www.pngkey.com/png/detail/816-8162314_rock-paper-scissors-mickey-mouse-hand-drawing.png"
+            }
+
+            if(x=="paper"){
+                document.getElementById("comp").src = "https://www.pngkey.com/png/detail/8-87110_mickey-e-minnie-mickey-mouse-hand-clipart.png"
+            }
+
+            if(x=="scissors"){
+                document.getElementById("comp").src = "https://imgs.search.brave.com/2fgOxsRqqLuRTa1yvaX5r3mneQopT-REjOoSyLG6r9w/rs:fit:291:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5n/Y3FNd2Rhay04WXFB/ZGVzRUs4bzh3SGFN/QyZwaWQ9QXBp"
+            }
+
+            if(y=="rock" || y=="Rock"){
+                document.getElementById("u").src = "https://www.pngkey.com/png/detail/816-8162314_rock-paper-scissors-mickey-mouse-hand-drawing.png"
+            }
+
+            if(y=="paper" || y=="Paper"){
+                document.getElementById("u").src = "https://www.pngkey.com/png/detail/8-87110_mickey-e-minnie-mickey-mouse-hand-clipart.png"
+            }
+
+            if(y=="scissors" || y=="Scissors" || y=="Scissor" || y=="scissor"){
+                document.getElementById("u").src = "https://imgs.search.brave.com/2fgOxsRqqLuRTa1yvaX5r3mneQopT-REjOoSyLG6r9w/rs:fit:291:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5n/Y3FNd2Rhay04WXFB/ZGVzRUs4bzh3SGFN/QyZwaWQ9QXBp"
+            }
+
+            //score
+            if(x=="rock" && (y=="rock" || y=="Rock")){
+                document.getElementById("result").innerHTML = "Draw";
+                a=a+1;
+                b=b+1;
+                document.getElementById("userscore").innerHTML = a
+                document.getElementById("pcscore").innerHTML = b
+            }
+            if(x=="paper" && (y=="paper" || y=="Paper")){
+                document.getElementById("result").innerHTML = "Draw";
+                a=a+1;
+                b=b+1;
+                document.getElementById("userscore").innerHTML = a
+                document.getElementById("pcscore").innerHTML = b
+            }
+            if(x=="scissors" && (y=="scissors" || y=="Scissors" || y=="Scissor" || y=="scissor")){
+                document.getElementById("result").innerHTML = "Draw";
+                a=a+1;
+                b=b+1;
+                document.getElementById("userscore").innerHTML = a
+                document.getElementById("pcscore").innerHTML = b
+            }
+
+            if(x=="rock" && (y=="scissors" || y=="Scissors" || y=="Scissor" || y=="scissor")){
+                document.getElementById("result").innerHTML = "Lose";
+                a=a+0;
+                b=b+1;
+                document.getElementById("userscore").innerHTML = a
+                document.getElementById("pcscore").innerHTML = b
+            }
+            if(x=="scissors" && (y=="paper" || y=="Paper")){
+                document.getElementById("result").innerHTML = "Lose";
+                a=a+0;
+                b=b+1;
+                document.getElementById("userscore").innerHTML = a
+                document.getElementById("pcscore").innerHTML = b
+            }
+            if(x=="paper" && (y=="rock" || y=="Rock")){
+                document.getElementById("result").innerHTML = "Lose";
+                a=a+0;
+                b=b+1;
+                document.getElementById("userscore").innerHTML = a
+                document.getElementById("pcscore").innerHTML = b
+            }
+
+            if(x=="scissors" && (y=="rock" || y=="Rock")){
+                document.getElementById("result").innerHTML = "Win";
+                a=a+1;
+                b=b+0;
+                document.getElementById("userscore").innerHTML = a
+                document.getElementById("pcscore").innerHTML = b
+            }
+            if(x=="rock" && (y=="paper" || y=="Paper")){
+                document.getElementById("result").innerHTML = "Win";
+                a=a+1;
+                b=b+0;
+                document.getElementById("userscore").innerHTML = a
+                document.getElementById("pcscore").innerHTML = b
+            }
+            if(x=="paper" && (y=="scissors" || y=="Scissors" || y=="Scissor" || y=="scissor")){
+                document.getElementById("result").innerHTML = "Win";
+                a=a+1;
+                b=b+0;
+                document.getElementById("userscore").innerHTML = a
+                document.getElementById("pcscore").innerHTML = b
+            }
+        }
+    </script>
+</body>
+</html>
